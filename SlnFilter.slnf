@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "ASP.NET Core in action. Andrew Lock. 3 edition.sln",
+    "projects": [
+      "Chapter36\\MinimalApiXunitTestingApp.Test\\MinimalApiXunitTestingApp.Test.csproj",
+      "Chapter36\\MinimalApiXunitTestingApp\\MinimalApiXunitTestingApp.csproj"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+﻿@* Директива @page указывает на то, что это представление (view, шаблон) Razor. *@
+@page
+
+@* Директива @model связывает страницу Razor с определенной моделью страницы.
+Класс PrivacyModel можно найти в файле .\Pages\Privacy.cshtml.cs*@
+@model PrivacyModel
+
+@* Код C#, который не пишется в ответ. *@
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+@* HTML-код с динамическими значениями C#, которые пишутся в ответ. *@
+<h1>@ViewData["Title"]</h1>
+
+@* Автономный статический HTML-код. *@
+<p>Use this page to detail your site's privacy policy.</p>

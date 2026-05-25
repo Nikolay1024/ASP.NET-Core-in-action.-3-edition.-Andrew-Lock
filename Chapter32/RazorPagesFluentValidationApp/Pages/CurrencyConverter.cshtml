@@ -1,0 +1,39 @@
+﻿@page
+@model CurrencyConverterModel
+@{
+    ViewData["Title"] = "Конвертер валют";
+}
+
+<h1>Нажмите "Отправить", чтобы отправить запрос и увидеть результаты.</h1>
+
+<form method="post">
+    <p>Действующие коды валют: @string.Join(", ", Model.Currencies)</p>
+    <div class="mb-3">
+        <label asp-for="BindingModel.CurrencyFrom" class="form-label"></label>
+        <input asp-for="BindingModel.CurrencyFrom" class="form-control" />
+        <span asp-validation-for="BindingModel.CurrencyFrom" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="BindingModel.CurrencyTo" class="form-label"></label>
+        <input asp-for="BindingModel.CurrencyTo" class="form-control" />
+        <span asp-validation-for="BindingModel.CurrencyTo" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="BindingModel.Quantity" class="form-label"></label>
+        <input asp-for="BindingModel.Quantity" class="form-control" />
+        <span asp-validation-for="BindingModel.Quantity" class="text-danger"></span>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Results))
+{
+    <h3 class="mt-2">Результаты:</h3>
+    <p>@Model.Results</p>
+}
+
+@section scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

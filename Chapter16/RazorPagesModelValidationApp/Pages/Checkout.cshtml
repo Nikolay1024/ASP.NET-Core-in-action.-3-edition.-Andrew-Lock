@@ -1,0 +1,36 @@
+﻿@page
+@model RazorPagesModelValidationApp.Pages.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Проверить</h1>
+<p>Введите значения и нажмите Submit</p>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="BindingModel.FirstName"></label>
+        <input class="form-control" asp-for="BindingModel.FirstName" />
+        <span asp-validation-for="BindingModel.FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.LastName"></label>
+        <input class="form-control" asp-for="BindingModel.LastName" />
+        <span asp-validation-for="BindingModel.LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Email"></label>
+        <input class="form-control" asp-for="BindingModel.Email" />
+        <span asp-validation-for="BindingModel.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.PhoneNumber"></label>
+        <input class="form-control" asp-for="BindingModel.PhoneNumber" />
+        <span asp-validation-for="BindingModel.PhoneNumber" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

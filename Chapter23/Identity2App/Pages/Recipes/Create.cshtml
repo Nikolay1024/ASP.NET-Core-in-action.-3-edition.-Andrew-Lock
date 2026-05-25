@@ -1,0 +1,82 @@
+﻿@page
+@model Recipes.CreateModel
+@{
+    ViewData["Title"] = "Создание рецепта";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<form method="post" class="form-horizontal">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <partial name="_RecipePartial" model="Model.Input" />
+
+    <div class="form-group">
+        @* К сожалению, одновременное создание подпунктов вместе с родительским элементом — это настоящая
+        головная боль, и пока приходится использовать костыльный JavaScript. *@
+        <table class="table table-striped" id="ingredients">
+            <thead>
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Input.Ingredients.Count; i++)
+                {
+                    var ingredient = Model.Input.Ingredients[i];
+                    <tr>
+                        <td>
+                            <input asp-for="Input.Ingredients[i].Name" />
+                            <span asp-validation-for="Input.Ingredients[i].Name" class="text-danger"></span>
+                        </td>
+                        <td>
+                            <input asp-for="Input.Ingredients[i].Quantity" />
+                            <span asp-validation-for="Input.Ingredients[i].Quantity" class="text-danger"></span>
+                        </td>
+                        <td>
+                            <input asp-for="Input.Ingredients[i].Unit" />
+                            <span asp-validation-for="Input.Ingredients[i].Unit" class="text-danger"></span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger remove">Удалить</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" class="btn btn-secondary" id="add-ingredient">Добавить ингредиент +</button>
+            <button type="submit" class="btn btn-primary">Создать рецепт +</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        var ingredients = $('#ingredients tbody');
+        $("#add-ingredient").click(function () {
+            var rowNo = ingredients.find('tr').length;
+            var template =
+                '<tr>' +
+                    '<td><input name="Ingredients[' + rowNo + '].Name" id="Ingredients[' + rowNo + ']_Name" /></td>' +
+                    '<td><input name="Ingredients[' + rowNo + '].Quantity" id="Ingredients[' + rowNo + ']_Quantity" /></td>' +
+                    '<td><input name="Ingredients[' + rowNo + '].Unit" id="Ingredients[' + rowNo + ']_Unit" /></td>' +
+                    '<td><button type="button" class="btn btn-danger remove">Удалить</button></td>' +
+                '</tr>';
+            ingredients.append(template);
+        });
+
+        ingredients.on('click', '.remove', function (e) {
+            $(this).closest('tr').remove();
+        });
+    </script>
+}

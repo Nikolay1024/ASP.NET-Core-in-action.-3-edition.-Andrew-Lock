@@ -1,0 +1,55 @@
+﻿@page
+@model CurrencyConverter.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+<h1>@ViewData["Title"]</h1>
+
+@* Тег-хелпер asp-page тега <form/> заполняет атрибут action (URL-адрес, на который будет отправляться форма).
+По умолчанию используется URL-адрес, по которому была получена эта страница, т.е. CurrencyConverter/Checkout. *@
+<form method="post">
+    <div class="form-group">
+        @* Тег-хелпер asp-for для тега <label/> заполняет содержимое на основе имени свойства FirstName,
+        либо атрибута [Display] свойства FirstName.
+        А также заполняет атрибут for на основе связанного id тега <input id="BindingModel_FirstName" />.
+        
+        <label for="BindingModel_FirstName">Имя</label> *@
+        <label asp-for="BindingModel.FirstName"></label>
+
+        @* Тег-хелпер asp-for для тега <input/> заполняет атрибуты id на основе имени свойства FirstName.
+        А также заполняет атрибут для привязки модели (name) на основе имени свойства FirstName.
+        А также заполняет атрибут type на основе типа свойства FirstName и атрибутов свойства FirstName.
+        А также заполняет атрибуты для валидации (data-val-*) на основе типа свойства FirstName и атрибутов
+        свойства FirstName.
+        
+        <input id="BindingModel_FirstName" name="BindingModel.FirstName" type="text" />*@
+        <input class="form-control" asp-for="BindingModel.FirstName" />
+        
+        @* Тег-хелпер asp-validation-for для тега <span/> заполняет атрибут для отображения ошибок валидации
+        (data-valmsg-for) на основе связанного имени свойства FirstName.
+        А также заполняет атрибут data-valmsg-replace указывающий, перезаписывать <span/> при новых ошибках валидации.
+        
+        <span data-valmsg-for="BindingModel.FirstName" data-valmsg-replace="true"></span> *@
+        <span asp-validation-for="BindingModel.FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.LastName"></label>
+        <input class="form-control" asp-for="BindingModel.LastName" />
+        <span asp-validation-for="BindingModel.LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Email"></label>
+        <input class="form-control" asp-for="BindingModel.Email" />
+        <span asp-validation-for="BindingModel.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.PhoneNumber"></label>
+        <input class="form-control" asp-for="BindingModel.PhoneNumber" />
+        <span asp-validation-for="BindingModel.PhoneNumber" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

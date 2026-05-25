@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    bool showContent = true;
+}
+
+@if (showContent)
+{
+    <p>Содержимое для отображения.</p>
+}
+
+<p if="showContent">
+    Отображается, когда <code>showContent</code> имеет значение true.
+</p>
+
+<p if="!showContent">
+    Отображается, когда <code>showContent</code> имеет значение false.
+</p>
+
+<markdown>
+## This is a markdown title
+This is a markdown list:
+* Item 1
+* Item 2
+
+<div if="showContent">
+    Отображается, когда <code>showContent</code> имеет значение true.
+</div>
+
+@(nameof(showContent)) имеет значение `@showContent`
+
+[ASP.NET Сore in action link](https://www.manning.com/books/asp-net-core-in-action-second-edition)
+</markdown>
+
+<footer>
+    <span>Вся информация:</span><system-info />
+    <span>Только машина:</span><system-info add-os="false" />
+    <span>Только ОС:</span><system-info add-machine="false" />
+    <span>Без информации:</span><system-info add-machine="false" add-os="false" />
+</footer>

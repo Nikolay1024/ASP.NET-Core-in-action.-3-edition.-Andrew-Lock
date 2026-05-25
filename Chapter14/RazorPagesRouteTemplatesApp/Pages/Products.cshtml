@@ -1,0 +1,17 @@
+﻿@* Шаблоны маршрута для страницы Razor по соглашению основаны на пути к файлу относительно каталога Pages
+(Products, Search, ProductDetails/Index). Чтобы настроить шаблон маршрута страницы Razor, обновите директиву
+@page. В Razor Pages можно использовать те же шаблоны маршрута, что и для конечных точек Minimal API.
+Т.е. литералы, обязательные параметры, необязательные параметры, параметры по умолчанию и ограничения.
+
+Добавление сегмента в шаблон маршрута с помощью директивы @page "{Name}" установит маршрут Products/{Name}.
+Полная замена шаблона маршрута с помощью директивы @page "/Category/{Name}" установит маршрут Category/{Name}. *@
+
+@page "{Name}"
+@model RazorPagesRouteTemplatesApp.Pages.ProductsModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>@Model.Selected!.Name</h1>
+
+<a asp-page="/ProductDetails/Index" asp-route-name="@Model.Name">Просмотреть</a>

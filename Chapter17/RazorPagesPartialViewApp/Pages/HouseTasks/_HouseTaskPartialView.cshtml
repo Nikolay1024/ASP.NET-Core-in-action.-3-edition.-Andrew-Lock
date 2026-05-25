@@ -1,0 +1,11 @@
+﻿@* Директива @model устанавливает тип, указывающий, какая модель страницы сопоставляется с
+частичным представлением Razor. *@
+@model RazorPagesPartialViewApp.Services.HouseTask
+
+<h2>@Model.Title</h2>
+<ul>
+    @foreach (string? subTask in Model.HouseTaskSet)
+    {
+        <li>@subTask</li>
+    }
+</ul>

@@ -1,0 +1,19 @@
+﻿@page "{id}"
+@model RazorPagesRenderingHtml3App.Pages.HouseTasksViewModel
+
+<p>
+    @if (Model.HouseTask!.IsComplete)
+    {
+        <strong>Молодец, ты все сделал.</strong>
+    }
+    else
+    {
+        <strong>Остаются следующие задачи:</strong>
+        <ul>
+            @foreach (string? subTask in Model.HouseTask.HouseTaskSet)
+            {
+                <li>@subTask</li>
+            }
+        </ul>
+    }
+</p>

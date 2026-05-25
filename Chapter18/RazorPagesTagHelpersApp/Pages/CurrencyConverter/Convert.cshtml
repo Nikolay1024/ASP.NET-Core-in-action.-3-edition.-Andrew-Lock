@@ -1,0 +1,77 @@
+﻿@page
+@model CurrencyConverter.ConvertModel
+@{
+    ViewData["Title"] = "Convert";
+}
+<h1>Преобразование значений</h1>
+<p>Выберите значения</p>
+
+@* Тег-хелпер asp-page тега <form/> заполняет атрибут action (URL-адрес, на который будет отправляться форма).
+По умолчанию используется URL-адрес, по которому была получена эта страница, т.е. CurrencyConverter/Convert.
+Также в теге <form/> можно использовать тег-хелпер asp-page-handler для указания метода обработчика страницы.
+Тег-хелпер asp-route-* для заполнения параметров маршрута. Его можно добавлять несколько раз для разных параметров маршрута.*@
+<form asp-page="CurrencyConverter/Convert" method="post">
+    <div class="form-group">
+        @* Тег-хелпер asp-for для тега <label/> заполняет содержимое на основе имени свойства CurrencyFrom,
+        либо атрибута [Display] свойства CurrencyFrom.
+        А также заполняет атрибут for на основе связанного id тега <select id="BindingModel_CurrencyFrom" />.
+        
+        <label for="BindingModel_CurrencyFrom">Исходная валюта</label> *@
+        <label asp-for="BindingModel.CurrencyFrom"></label>
+        
+        @* Тег-хелпер asp-for для тега <select/> заполняет атрибут id на основе имени свойства CurrencyFrom.
+        А также заполняет атрибут для привязки модели (name) на основе имени свойства CurrencyFrom.
+        А также заполняет атрибуты для валидации (data-val-*) на основе типа свойства CurrencyFrom и атрибутов
+        свойства CurrencyFrom.
+        
+        <select id="BindingModel_CurrencyFrom" name="BindingModel.CurrencyFrom">
+            <option value=""></option>
+            <option value="GBP">GBP</option>
+            <option value="USD">USD</option>
+            <option value="CAD">CAD</option>
+            <option value="EUR">EUR</option>
+        </select> *@
+        <select class="form-control dropdown" asp-for="BindingModel.CurrencyFrom" asp-items="Model.CurrencyCodes">
+            <option value=""></option>
+        </select>
+        
+        @* Тег-хелпер asp-validation-for для тега <span/> заполняет атрибут для отображения ошибок валидации
+        (data-valmsg-for) на основе связанного имени свойства CurrencyFrom.
+        А также заполняет атрибут data-valmsg-replace указывающий, перезаписывать <span/> при новых ошибках валидации.
+        
+        Когда ошибка возникает во время валидации на стороне клиента, сообщение об ошибке для указанного свойства будет
+        отображаться в теге <span/>. Тег <span/> также будет использоваться для отображения ошибок, если валидация на
+        стороне сервера окончится неудачей, и форма будет отображена повторно.
+        Любые ошибки, ассоциированные со свойством CurrencyFrom, хранящиеся в ModelState, будут отображены в теге <span/>,
+        и у тега будут соответствующие атрибуты для подключения валидации на стороне клиента с помощью jQuery.
+        Ошибка валидации, отображаемая в теге, будет заменена, когда пользователь обновит поле CurrencyFrom, и валидация
+        будет выполнена на стороне клиента.
+        
+        <span data-valmsg-for="BindingModel.CurrencyFrom" data-valmsg-replace="true"></span> *@
+        <span asp-validation-for="BindingModel.CurrencyFrom" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Quantity"></label>
+        <input class="form-control" asp-for="BindingModel.Quantity" />
+        <span asp-validation-for="BindingModel.Quantity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.CurrencyTo"></label>
+        <select class="form-control dropdown" asp-for="BindingModel.CurrencyTo" asp-items="Model.CurrencyCodes">
+            <option value=""></option>
+        </select>
+        <span asp-validation-for="BindingModel.CurrencyTo" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+
+    @* Помимо отображения сообщений валидации для отдельных свойств, также можно отобразить сводку всех сообщений в
+    теге <div/> с помощью тег-хелпера asp-validation-summary. Тег-хелпер сводки валидации особенно полезен, если у вас
+    есть ошибки, связанные с вашей страницей, которые не относятся только к одному свойству. Такие ошибки можно
+    добавить к состоянию модели, используя пустой ключ.
+
+    Перечисление ValidationSummary управляет отображением ошибок и имеет три возможных значения:
+    1) None – не отображать ошибки.
+    2) ModelOnly – отображать ошибки уровня модели, но не уровня свойств.
+    3) All – отображать ошибки уровня модели и уровня свойств. *@
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+</form>

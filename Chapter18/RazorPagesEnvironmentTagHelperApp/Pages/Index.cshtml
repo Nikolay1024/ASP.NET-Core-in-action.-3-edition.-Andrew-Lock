@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<environment include="Development">
+    <div class="bg-warning p-2">
+        В данный момент вы находитесь в среде разработки (development).
+    </div>
+</environment>
+
+<environment include="Production">
+    <div class="bg-success p-2">
+        В данный момент вы находитесь в производственной среде (production).
+    </div>
+</environment>
+
+<div>
+    <h1 class="display-4 text-center">Home Page</h1>
+    <ul>
+        <li>
+            По умолчанию используется <code>среда разработки (development)</code>,
+            поэтому вы можете запустить приложение с помощью команды <code>dotnet run</code>.
+        </li>
+        <li>
+            Для запуска в <code>производственной среде (production)</code> запустите приложение с помощью команды
+            <code>dotnet run --environment Production</code>. В качестве альтернативы обновите переменную среды
+            <code>ASPNETCORE_ENVIRONMENT</code> (в файле <i>launchSettings.json</i>).
+        </li>
+    </ul>
+</div>

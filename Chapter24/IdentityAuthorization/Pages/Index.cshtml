@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Добро пожаловать в аэропорт";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    Пройдете ли вы через контроль безопасности?<br/>
+    Для входа необходимо войти в систему и иметь номер посадочного талона.
+</p>
+<p>
+    <a asp-page="/Airport/AirportSecurity" class="btn btn-primary">Пройти контроль безопасности</a>
+</p>

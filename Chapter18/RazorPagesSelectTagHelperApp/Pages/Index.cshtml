@@ -1,0 +1,105 @@
+﻿@page
+@using RazorPagesSelectTagHelperApp.Enums
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>Выберите свой любимый язык.</h2>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BindingModel.Value1">Выпадающий список (dropdown)</label>
+                @* Тег-хелпер asp-for для тега <select/> заполняет атрибут id на основе имени свойства Value1.
+                А также заполняет атрибут для привязки модели (name) на основе имени свойства Value1.
+                А также заполняет атрибуты для валидации (data-val-*) на основе типа свойства Value1 и атрибутов
+                свойства Value1.
+                
+                Тег-хелпер asp-items для тега <option/> заполняет содержимое на основе свойства Items.
+                А также заполняет атрибут содержащий отправляемое значение (value) на основе свойства Items.
+
+                <select id="BindingModel_Value1" name="BindingModel.Value1">
+                    <option value="js">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="cpp">C++</option>
+                    <option value="csharp">C#</option>
+                </select> *@
+                <select class="form-control dropdown" asp-for="BindingModel.Value1" asp-items="Model.Items"></select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BindingModel.Value2">Список с выбором одного элемента (listbox)</label>
+                <select class="form-control" asp-for="BindingModel.Value2" asp-items="Model.Items"
+                        size="@Model.Items.Count">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BindingModel.Values3">Список с выбором множества элементов (multi item listbox)</label>
+                @* Тег-хелпер asp-for для тега <select/> заполняет атрибут множественного выбора (multiple),
+                т.к. свойство Values3 типа List<string>. *@
+                <select class="form-control" asp-for="BindingModel.Values3" asp-items="Model.Items"></select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BindingModel.Values4">
+                    Список с выбором множества элементов с группами (multi item listbox with groups)
+                </label>
+                @* Тег-хелпер asp-items для тега <optgroup/> заполняет атрибут группы (label).
+
+                <select id="BindingModel_Values4" name="BindingModel.Values4" multiple="multiple">
+                    <optgroup label="Dynamic">
+                        <option value="js">JavaScript</option>
+                        <option value="python">Python</option>
+                    </optgroup>
+                    <optgroup label="Static">
+                        <option value="cpp">C++</option>
+                    </optgroup>
+                    <option value="csharp">C#</option>
+                </select> *@
+                <select class="form-control" asp-for="BindingModel.Values4" asp-items="Model.ItemsWithGroups"
+                        style="height:150px">
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BindingModel.Value5">Без опции "Без выбора"</label>
+                <select class="form-control dropdown" asp-for="BindingModel.Value5" asp-items="Model.Items"></select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BindingModel.Value6">С опцией "Без выбора"</label>
+                <select class="form-control dropdown" asp-for="BindingModel.Value6" asp-items="Model.Items">
+                    <option value="">**Не выбрано**</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BindingModel.Value7">С опцией "Без выбора"</label>
+                <select class="form-control dropdown" asp-for="BindingModel.Value7" asp-items="Model.ItemsWithNotSelected">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BindingModel.Value8">Выпадающий список с перечислением (Enum)</label>
+                <select class="form-control dropdown" asp-for="BindingModel.Value8"
+                        asp-items="Html.GetEnumSelectList<ProgrammingLanguages>()">
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>

@@ -1,0 +1,41 @@
+﻿<!-- Сервисы рабочей роли используют другой атрибут Sdk тега Project, в отличие от приложений ASP.NET Core 
+(Microsoft.NET.Sdk.Web). Web SDK включает в себя неявные ссылки на дополнительные пакеты, которые обычно не
+требуются в сервисах рабочей роли. -->
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <!-- Целевой фреймворк такой же, как и для приложений ASP.NET Core. -->
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Сервисы рабочей роли применяют конфигурацию, поэтому они могут использовать UserSecrets, как и приложения
+    ASP.NET Core -->
+    <UserSecretsId>dotnet-WorkerServiceApp-5107c702-7c2c-464b-be58-0d9c1836fdae</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Пакеты EF Core должны быть добавлены явно, как и для приложений ASP.NET Core. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.20">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.20">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <!-- Все сервисы рабочей роли явно добавляют этот пакет. Приложения ASP.NET Core добавляют его неявно. -->
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <!-- Добавляет поддержку для запуска приложения в качестве демона systemd Linux. -->
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="7.0.0" />
+    <!-- Добавляет поддержку для запуска приложения в качестве службы Windows. -->
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="7.0.0" />
+    <!-- Если вы используете IHttpClientFactory, вам нужно будет добавить этот пакет в сервисы рабочей роли. -->
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="7.105.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+</Project>

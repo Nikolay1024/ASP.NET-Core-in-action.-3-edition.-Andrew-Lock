@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Привет</h1>
+    <p>
+        Нажмите на один из примеров товаров и посмотрите, как изменится URL-адрес.
+        Оба этих товара отображаются на одной странице Razor.
+        На странице поиска показан пример маршрутизации с использованием параметра handler.
+    </p>
+</div>
+
+<ul>
+    <li><a asp-area="" asp-page="/Products" asp-route-name="big-widget">Big widget</a></li>
+    <li><a asp-area="" asp-page="/Products" asp-route-name="super-fancy-widget">Super fancy widget</a></li>
+    <li><a asp-area="" asp-page="/Search">Search</a></li>
+</ul>

@@ -1,0 +1,13 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Select currencies";
+}
+<h1>Выберите валюты</h1>
+
+<form asp-page="ShowRates" method="post">
+    <div class="form-group">
+        <select multiple name="currencies" asp-items="Model.Currencies" class="form-control"></select>
+    </div>
+    <button type="submit" name="action" class="btn btn-primary">Filter</button>
+</form>

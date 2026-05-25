@@ -1,0 +1,20 @@
+﻿@{
+    // Необходимо явно установить родительский макет _Layout, т.к. для макетов не устанавливается макет
+    // о умолчнию _Layout из файла _ViewStart.cshtml.
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div style="box-sizing: border-box; border: 5px solid red;" class="col-sm-3">
+        @* Сообщает механизму шаблонов, куда вставить секцию Leftbar дочернего представления Index.cshtml. *@
+        @RenderSection("Leftbar", required: true)
+    </div>
+    <div style="box-sizing: border-box; border: 5px solid orange;" class="col-sm-7">
+        @* Сообщает механизму шаблонов, куда вставить основное содержимое дочернего представления Index.cshtml. *@
+        @RenderBody()
+    </div>
+    <div style="box-sizing: border-box; border: 5px solid yellow;" class="col-sm-2">
+        @* Сообщает механизму шаблонов, куда вставить секцию Rightbar дочернего представления Index.cshtml. *@
+        @RenderSection("Rightbar", required: true)
+    </div>
+</div>

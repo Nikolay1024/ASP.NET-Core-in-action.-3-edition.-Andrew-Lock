@@ -1,0 +1,21 @@
+﻿@page "{id}"
+@model RazorPagesModelValidation3App.Pages.EditProductModel
+@{
+    ViewData["Title"] = "Product";
+}
+
+<h1>Edit @Model.BindingModel.Name</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="BindingModel.Name"></label>
+        <input class="form-control" asp-for="BindingModel.Name" />
+        <span asp-validation-for="BindingModel.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Price"></label>
+        <input class="form-control" asp-for="BindingModel.Price" />
+        <span asp-validation-for="BindingModel.Price"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

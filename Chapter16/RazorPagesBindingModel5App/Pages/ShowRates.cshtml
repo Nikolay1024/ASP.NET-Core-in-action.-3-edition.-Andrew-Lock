@@ -1,0 +1,14 @@
+﻿@page
+@model RazorPagesBindingModel5App.Pages.ShowRatesModel
+@{
+    ViewData["Title"] = "The rates";
+}
+<h1>Курсы обмена валют</h1>
+
+<dl class="dl-horizontal">
+    @foreach (var item in Model.SelectedCurrencies)
+    {
+        <dt>@item.Key</dt>
+        <dd>@item.Value</dd>
+    }
+</dl>

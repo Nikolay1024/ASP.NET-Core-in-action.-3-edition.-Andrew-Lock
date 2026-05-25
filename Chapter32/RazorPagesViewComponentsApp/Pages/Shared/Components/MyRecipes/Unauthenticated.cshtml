@@ -1,0 +1,12 @@
+﻿@{
+    // Используется специальный макет для компонента представления.
+    Layout = "_MyRecipesLayout.cshtml";
+}
+
+<div class="card-body">
+    <h5 class="card-title">Ваши рецепты</h5>
+    <p class="card-text">Войдите, чтобы просмотреть недавно созданные вами рецепты</p>
+
+    <a asp-area="Identity" asp-page="/Account/Register" class="card-link">Register</a>
+    <a asp-area="Identity" asp-page="/Account/Login" class="card-link">Login</a>
+</div>

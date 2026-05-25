@@ -1,0 +1,8 @@
+﻿@using RazorPagesCustomTagHelpersApp
+@namespace RazorPagesCustomTagHelpersApp.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@* Регистрация одного тег-хелпера. *@
+@addTagHelper RazorPagesCustomTagHelpersApp.TagHelpers.SystemInfoTagHelper, RazorPagesCustomTagHelpersApp
+@* Регистрация всех тег-хелперов из определенной сборки с помощью синтаксиса подстановочных знаков *.  *@
+@addTagHelper *, RazorPagesCustomTagHelpersApp

@@ -1,0 +1,10 @@
+﻿namespace MinimalApiXunitTestingApp.ViewModels
+{
+    public class RecipeViewModel
+    {
+        public int Id { get; set; }
+        public required string Name { get; set; }
+        public required string Method { get; set; }
+        public required IEnumerable<IngredientViewModel> Ingredients { get; set; }
+    }
+}

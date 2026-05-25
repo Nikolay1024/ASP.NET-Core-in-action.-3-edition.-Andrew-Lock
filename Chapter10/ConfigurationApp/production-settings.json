@@ -1,0 +1,7 @@
+{
+  "StoreDetails": {
+    "Name": "Head office"
+  },
+  "MyAppConnString": "productionDB;",
+  "GoogleMapsApiKey": "123456ABCD"
+}

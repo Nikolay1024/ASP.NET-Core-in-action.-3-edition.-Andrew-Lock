@@ -1,0 +1,39 @@
+﻿@page
+@model CurrencyModel
+@{
+    ViewData["Title"] = "Currency Page";
+}
+
+<p>Введите значения и нажмите "Преобразовать"</p>
+<div class="row">
+    <div class="col-sm-8">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="BindingModel.Quantity"></label>
+                <input asp-for="BindingModel.Quantity" class="form-control" />
+                <span asp-validation-for="BindingModel.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BindingModel.ExchangeRate"></label>
+                <input asp-for="BindingModel.ExchangeRate" class="form-control" />
+                <span asp-validation-for="BindingModel.ExchangeRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BindingModel.DecimalPlaces"></label>
+                <input asp-for="BindingModel.DecimalPlaces" class="form-control" />
+                <span asp-validation-for="BindingModel.DecimalPlaces" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for=@Model.Result></label><br />
+                <label>@Model.Result</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Преобразовать</button>
+            <div asp-validation-summary="ModelOnly"></div>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

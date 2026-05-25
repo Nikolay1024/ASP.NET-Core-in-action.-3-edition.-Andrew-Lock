@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@{
+    // Переопредеяет макет по умолчнию _Layout из файла _ViewStart.cshtml на _ThreeColumnLayout.
+    Layout = "_ThreeColumnLayout";
+    // ViewData служит для передачи данных из представления в макет.
+    ViewData["Title"] = "Home Page";
+}
+
+@* Определяет секцию Leftbar, которая может быть отрисована в родительском макете _ThreeColumnLayout. *@
+@section Leftbar {
+    <p>Это содержимое левой боковой панели.</p>
+}
+
+@* Определяет основное содержимое, которое может быть отрисовано в родительском макете _ThreeColumnLayout. *@
+<p>Это основное содержимое.</p>
+
+@* Определяет секцию Rightbar, которая может быть отрисована в родительском макете _ThreeColumnLayout. *@
+@section Rightbar {
+    <p>Это содержимое правой боковой панели.</p>
+}

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RazorPagesSelectTagHelperApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* Тег-хелпер добавления версии asp-append-version для тегов <script/>, <img/>, <link>.
+    Строка запроса со сбросом кеша добавляет параметр запроса к URL-адресу, например styles.css?v=1. Браузеры будут
+    кешировать ответ и использовать его для последующих запросов к URL-адресу. Когда ресурс изменяется, строка запроса
+    также изменяется, например styles.css?v=2. Браузеры будут рассматривать это как запрос нового ресурса и будут делать
+    новый запрос к styles.css?v=2, а не использовать старую кешированную версию файла styles.css?v=1.
+    Тег-хелпер asp-append-version позволяет автоматизировать данных процесс, добавляя к файлу версию, представляющую
+    хеш значение на основе содержимого файла styles.css. Соответственно, пока файл остается неизменным хеш будет одинаковым
+    и браузер будет кешировать первую версию файла. Как только файл styles.css поменяется, хэш файла тоже будет пересчитан
+    и браузеру придется запросить новую версию файла styles.css.
+    
+    <link rel="stylesheet" href="~/RazorPagesSelectTagHelperApp.styles.css?v=EWaMeWsJBYWmL2g_KkgXZQ5nPe" /> *@
+    <link rel="stylesheet" href="~/RazorPagesSelectTagHelperApp.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">RazorPagesSelectTagHelperApp</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - RazorPagesSelectTagHelperApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

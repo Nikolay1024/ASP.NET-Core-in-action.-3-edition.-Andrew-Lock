@@ -1,0 +1,26 @@
+﻿@page
+@model RazorPagesModelValidation2App.Pages.Currency.ConvertModel
+@{
+    ViewData["Title"] = "Convert currency";
+}
+<h1>Преобразование значений</h1>
+<p>Выберите значения</p>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="BindingModel.CurrencyFrom"></label>
+        <input class="form-control" asp-for="BindingModel.CurrencyFrom" />
+        <span asp-validation-for="BindingModel.CurrencyFrom"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.CurrencyTo"></label>
+        <input class="form-control" asp-for="BindingModel.CurrencyTo" />
+        <span asp-validation-for="BindingModel.CurrencyTo"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Quantity"></label>
+        <input class="form-control" asp-for="BindingModel.Quantity" />
+        <span asp-validation-for="BindingModel.Quantity"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

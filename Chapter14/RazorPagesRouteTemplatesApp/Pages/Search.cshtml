@@ -1,0 +1,38 @@
+﻿@page "{Handler?}"
+@model RazorPagesRouteTemplatesApp.Pages.SearchModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+@if (Model.Urls.Any())
+{
+    <ul>
+        @foreach (string? url in Model.Urls)
+        {
+            <li>@url</li>
+        }
+    </ul>
+}
+
+<form method="post">
+    <label asp-for="SearchTerm"></label>
+    <input asp-for="SearchTerm" />
+    <span asp-validation-for="SearchTerm"></span>
+
+    <button asp-page-handler="" type="submit">Поиск</button>
+    <button asp-page-handler="IgnoreCase" type="submit">Поиск (регистр не учитывается)</button>
+</form>
+
+@if (Model.Products.Any())
+{
+    <ul>
+        @foreach (var product in Model.Products)
+        {
+            <li>@product.Name (@product.Price.ToString("c"))</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Результаты не найдены: @Model.SearchTerm</p>
+}

@@ -1,0 +1,91 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form method="post">
+    <div class="form-check">
+        <label class="form-check-label" asp-for="BindingModel.Boolean"></label>
+        <input class="form-check-input" asp-for="BindingModel.Boolean" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Byte"></label>
+        <input class="form-control" asp-for="BindingModel.Byte" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Int"></label>
+        <input class="form-control" asp-for="BindingModel.Int" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Float"></label>
+        <input class="form-control" asp-for="BindingModel.Float" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Double"></label>
+        <input class="form-control" asp-for="BindingModel.Double" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Decimal"></label>
+        <input class="form-control" asp-for="BindingModel.Decimal" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.FormattedInViewDecimal">Decimal в формате {0,000}</label>
+        <input class="form-control" asp-for="BindingModel.FormattedInViewDecimal" asp-format="{0:f3}" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.FormattedInModelDecimal">Decimal в формате {0,0000}</label>
+        <input class="form-control" asp-for="BindingModel.FormattedInModelDecimal" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.String"></label>
+        <input class="form-control" asp-for="BindingModel.String" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Multiline"></label>
+        <textarea class="form-control" asp-for="BindingModel.Multiline" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BindingModel.Phone"></label>
+        <input class="form-control" asp-for="BindingModel.Phone" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Email"></label>
+        <input class="form-control" asp-for="BindingModel.Email" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Url"></label>
+        <input class="form-control" asp-for="BindingModel.Url" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.HiddenInput"></label>
+        <input class="form-control" asp-for="BindingModel.HiddenInput" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BindingModel.Password"></label>
+        <input class="form-control" asp-for="BindingModel.Password" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.DateTime"></label>
+        <input class="form-control" asp-for="BindingModel.DateTime" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Date"></label>
+        <input class="form-control" asp-for="BindingModel.Date" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Time"></label>
+        <input class="form-control" asp-for="BindingModel.Time" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BindingModel.Currency"></label>
+        <input class="form-control" asp-for="BindingModel.Currency" />
+    </div>
+    <p>Отправьте форму, чтобы просмотреть сводку ошибок валидации:</p>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>

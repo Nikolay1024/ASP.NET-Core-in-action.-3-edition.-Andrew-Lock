@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Тестовый проект представляет собой стандартный проект .NET Core, ориентированный на .NET 7.0. -->
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <!-- При добавлении пакета Microsoft.NET.Test.Sdk проект помечается как тестовый путем установки MsBuild
+    свойства IsTestProject. -->
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- .NET Test SDK, необходимый для всех тестовых проектов. -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />
+    <!-- Фреймворк тестирования xUnit. -->
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <!-- Тестовый адаптер xUnit для .NET Test SDK, который позволяет xUnit интегрироваться в VS. -->
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
+    <!-- Необязательный пакет, который собирает метрики о том, какая часть вашего кода покрыта тестами. -->
+    <PackageReference Include="coverlet.collector" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RazorPagesXunitTestingApp\RazorPagesXunitTestingApp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>

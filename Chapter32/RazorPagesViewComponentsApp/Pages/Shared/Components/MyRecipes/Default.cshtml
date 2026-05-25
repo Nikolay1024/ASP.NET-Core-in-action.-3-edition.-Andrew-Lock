@@ -1,0 +1,19 @@
+﻿@model List<RecipeSummaryViewModel>
+@{ 
+    // Используется специальный макет для компонента представления.
+    Layout = "_MyRecipesLayout.cshtml";
+}
+
+<div class="card-body">
+    <h5 class="card-title">Ваши рецепты</h5>
+    <p class="card-text">Недавно созданные вами рецепты</p>
+</div>
+
+<div class="list-group list-group-flush">
+    @foreach (var recipe in Model)
+    {
+        <a asp-page="/Recipes/View" asp-route-id="@recipe.Id" class="list-group-item list-group-item-action">
+            @recipe.Name | @recipe.TimeToCook | @recipe.NumberOfIngredients
+        </a>
+    }
+</div>
